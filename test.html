@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.main {
+			padding-top: 30px;
+			width: 730px;
+			height: 454px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.banner {
+			width: 730px;
+			height: 454px;
+			overflow: hidden;
+		}
+		.banner_image {
+			display: block;
+			width: 730px;
+			height: 454px;
+		}
+		.slider1 {
+			background-image: url("image/slide1.jpg");
+		}
+		.slider2 {
+			background-image: url("image/slide2.jpg");
+		}
+		.slider3 {
+			background-image: url("image/slide3.jpg");
+		}
+		.slider4 {
+			background-image: url("image/slide4.jpg");
+		}
+		.slider5 {
+			background-image: url("image/slide5.jpg");
+		}
+		.slider6 {
+			background-image: url("image/slide6.jpg");
+		}
+		.dots {
+			list-style: none;
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			margin-left: -100px;
+			padding-left: 0;
+		}
+		.dots li {
+			float: left;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			border: 1px solid pink;
+			margin-left: 10px;
+			background-color: #e5d3bd;
+			color: white;
+			font-size: 14px;
+			text-align: center;
+			line-height: 20px;
+		}
+		.dots li.active {
+			background-color: white;
+			color: gray;
+		}
+		a {
+			text-decoration: none;
+		}
+		.btn a{
+			position: absolute;
+			top: 50%;
+			display: block;
+			width: 30px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			color: white;
+			font: 400 22px/50px "simsum";
+			background-color: rgba(0,0,0,0.1);
+		}
+		.btn a:hover {
+			background-color: rgba(0,0,0,0.3);
+		}
+		.left-btn {
+			left: 0;
+		}
+		.right-btn {
+			right: 0;
+		}
+	</style>
+</head>
+<body>
+<div class="main">
+	<div class="banner" id="box">
+		<a href="#">
+			<div class="banner_image slider1 slider-active"></div>
+		</a>
+		<a href="#">
+			<div class="banner_image slider2"></div>
+		</a>
+		<a href="#">
+			<div class="banner_image slider3"></div>
+		</a>
+		<a href="#">
+			<div class="banner_image slider4"></div>
+		</a>
+		<a href="#">
+			<div class="banner_image slider5"></div>
+		</a>
+		<a href="#">
+			<div class="banner_image slider6"></div>
+		</a>
+	</div>
+	<ul class="dots" id="dots">
+		<li class="active">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+	<div class="btn">
+		<a href="javascript:void(0)" class="left-btn">&lt;</a>
+		<a href="javascript:void(0)" class="right-btn">&gt;</a>
+	</div>
+</div>		
+</body>
+</html>
+<script type="text/javascript">
+	function id(x) {
+  		if(typeof x == "string") return document.getElementById(x);
+  		return x;
+  }
+	var index = 0,
+		timer = 0,
+		main = id("box"),
+		dots = id('dots'),
+		banner = main.getElementsByTagName("div");
+		console.log(banner)
+
+	function move_banner(){
+		timer = setInterval(function(){
+			index++;
+			if(index>=banner.length){
+				index = 0;
+			}
+			slide();
+		},2000);
+	}
+	function slide(){
+		for(var i = 0;i<banner.length;i++){
+			banner[i].style.display = 'none';
+		}
+		banner[index].style.display = 'block';
+	}
+	move_banner();
+</script>
